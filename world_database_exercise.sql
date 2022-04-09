@@ -24,4 +24,12 @@ FROM country
 JOIN city
 ON city.id=country.capital WHERE country.name = 'Spain';
 
+-- Using JOIN … ON, list all the languages spoken in the 'Southeast Asia' region.
+Select country.name,region, countrylanguage.language
+FROM country
+JOIN countrylanguage
+ON country.code=countrylanguage.CountryCode WHERE country.region='Southeast Asia';
+
+-- Select 25 cities around the world that start with the letter 'F' in a single SQL query.
+SELECT * from city where name LIKE 'F%' LIMIT 25;
 
