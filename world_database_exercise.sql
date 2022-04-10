@@ -33,3 +33,29 @@ ON country.code=countrylanguage.CountryCode WHERE country.region='Southeast Asia
 -- Select 25 cities around the world that start with the letter 'F' in a single SQL query.
 SELECT * from city where name LIKE 'F%' LIMIT 25;
 
+-- Using COUNT, get the number of cities in China.
+SELECT country.code, country.name, COUNT(city.name) AS Number_of_city
+FROM country
+JOIN city
+ON country.code=city.CountryCode WHERE country.name='China';
+
+-- Using ORDER BY, & LIMIT, what country has the lowest population? 
+SELECT name from country ORDER BY population ASC LIMIT 1;
+
+-- Using aggregation, return the number of countries in the database. 
+SELECT COUNT(Name) from country;
+
+-- What are the top ten largest countries by population?
+SELECT Name, Population from country ORDER BY Population DESC LIMIT 10;
+
+-- List the top five most densely populated in Japan.
+SELECT Name, Population FROM city WHERE CountryCode='JPN' ORDER BY Population DESC LIMIT 5;
+
+-- List the names and country codes of every country which has Elisabeth II as its Head of State.
+SELECT Code, Name, HeadofState from country WHERE HeadOfState = 'Elisabeth II';
+
+-- List the top ten countries which have the smallest population-to-area ratio.
+SELECT Name, Population/SurfaceArea AS P2A from country ORDER BY P2A ASC LIMIT 10;
+
+
+
