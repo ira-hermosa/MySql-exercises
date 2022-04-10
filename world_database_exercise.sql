@@ -57,5 +57,24 @@ SELECT Code, Name, HeadofState from country WHERE HeadOfState = 'Elisabeth II';
 -- List the top ten countries which have the smallest population-to-area ratio.
 SELECT Name, Population/SurfaceArea AS P2A from country ORDER BY P2A ASC LIMIT 10;
 
+-- List every unique world language, according to the World database.
+SELECT DISTINCT language from countrylanguage;
 
+-- What are the top 10 richest countries by GNP?
+SELECT Name, GNP from country ORDER BY GNP DESC LIMIT 10;
 
+-- What are the top 10 largest countries by surface area?
+SELECT Name, SurfaceArea from country ORDER BY SurfaceArea DESC LIMIT 10;
+
+-- List every country where over 50% of its population can speak French.
+SELECT country.name, country.code,  countrylanguage.language
+FROM country
+JOIN countrylanguage
+ON country.code=countrylanguage.CountryCode WHERE countrylanguage.language='French' AND countrylanguage.Percentage >50;
+
+-- Which country has the worst life expectancy
+SELECT Name, LifeExpectancy from country WHERE LifeExpectancy !=0 ORDER BY LifeExpectancy ASC Limit 1;
+
+-- What is the most common government form? 
+SELECT * from country;
+SELECT GovernmentForm, COUNT(*)AS Govt_count FROM country GROUP BY GovernmentForm ORDER BY Govt_count DESC;
