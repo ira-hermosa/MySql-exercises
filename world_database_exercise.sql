@@ -76,5 +76,8 @@ ON country.code=countrylanguage.CountryCode WHERE countrylanguage.language='Fren
 SELECT Name, LifeExpectancy from country WHERE LifeExpectancy !=0 ORDER BY LifeExpectancy ASC Limit 1;
 
 -- What is the most common government form? 
-SELECT * from country;
 SELECT GovernmentForm, COUNT(*)AS Govt_count FROM country GROUP BY GovernmentForm ORDER BY Govt_count DESC;
+
+-- Countries that have gained independence since records began
+SELECT Name, IndepYear FROM country WHERE IndepYear IS NOT NULL ORDER BY IndepYear ASC;
+
